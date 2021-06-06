@@ -52,11 +52,17 @@ export class DashboardComponent implements OnInit {
   }
 
   removeLocation(zip: string){
-    const index = this.currentWeatherArray.findIndex(code => code.zip == zip);
-    const zipIndex = this.zipcodeArray.findIndex(code => code == zip);
-    this.currentWeatherArray.splice(index, 1);
-    this.zipcodeArray.splice(zipIndex, 1);
-    localStorage.setItem(WeatherConstants.ZIPCODES, JSON.stringify(this.zipcodeArray));
+    if(!!zip) {
+      const index = this.currentWeatherArray.findIndex(code => code.zip == zip);
+      const zipIndex = this.zipcodeArray.findIndex(code => code == zip);
+
+      this.currentWeatherArray.splice(index, 1);
+      this.zipcodeArray.splice(zipIndex, 1);
+      localStorage.setItem(WeatherConstants.ZIPCODES, JSON.stringify(this.zipcodeArray));
+    } else {
+      this.isError = true;
+    }
+    
   }
 
   handleError(err: Error) {

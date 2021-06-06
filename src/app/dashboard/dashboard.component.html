@@ -8,7 +8,7 @@
     </button>
   </div>
   <div class="my-2" *ngFor="let currentWeather of currentWeatherArray">
-    <app-current-weather [currentWeather]="currentWeather" (removeLocation)="removeLocation(zip)">
+    <app-current-weather [currentWeather]="currentWeather" (removeLocation)="removeLocation(currentWeather.zip)">
     </app-current-weather>
   </div>
 </div>
