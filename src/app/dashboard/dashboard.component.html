@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="well">
+    <h2>Enter a zipcode:</h2>
+    <input class="form-control" placeholder="Zipcode" type="text" id="addLocation" #addLocation>
+    <br>
+    <button class="btn btn-primary" id="addLocationBtn" (click)="addLocationEvent(addLocation.value)" >
+      Add location
+    </button>
+  </div>
+  <div class="my-2" *ngFor="let currentWeather of currentWeatherArray">
+    <app-current-weather [currentWeather]="currentWeather" (removeLocation)="removeLocation(zip)">
+    </app-current-weather>
+  </div>
+</div>
